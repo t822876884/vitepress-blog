@@ -1,0 +1,17 @@
+version: '3'
+services:
+  vitepress:
+    build: .
+    platform: linux/amd64
+    container_name: vitepress_blog
+    ports:
+      - "8848:8848"
+    volumes:
+      # Mount the specific content directories as requested
+      - /volume1/docker/doc_blog/00.bigdata:/app/docs/00.bigdata
+      - /volume1/docker/doc_blog/01.ai:/app/docs/01.ai
+      - /volume1/docker/doc_blog/02.java:/app/docs/02.java
+      - /volume1/docker/doc_blog/03.yunwei:/app/docs/03.yunwei
+      - /volume1/docker/doc_blog/04.interview:/app/docs/04.interview
+      - /volume1/docker/doc_blog/05.other:/app/docs/05.other
+    restart: always
