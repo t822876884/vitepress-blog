@@ -20,7 +20,13 @@ import "vitepress-theme-teek/theme-chalk/tk-fade-up-animation.css"; // 首次加
 import "./styles/code-bg.scss";
 import "./styles/iframe.scss";
 
+import { TkArchivesPage } from "vitepress-theme-teek";
+import "vitepress-theme-teek/theme-chalk/tk-archives-page.css";
+
 export default {
     extends: Teek,
     Layout: TeekLayoutProvider,
+    enhanceApp({ app, siteData }) {
+        app.component("TkArchivesPage", TkArchivesPage);
+    },
 };
