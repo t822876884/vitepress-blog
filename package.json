@@ -11,7 +11,10 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "docs:clean": "rm -rf docs/.vitepress/cache docs/.vitepress/dist",
+    "new": "./new-post.sh",
+    "test:auto-index": "./test-auto-index.sh"
   },
   "dependencies": {
     "twikoo": "^1.6.44"
