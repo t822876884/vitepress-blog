@@ -247,6 +247,89 @@ const teekConfig = defineTeekConfig({
             link: "",
         },
     },
+
+    articleBanner: {
+        enabled: true, // 是否启用单文章页 Banner
+        showCategory: true, // 是否展示分类
+        showTag: true, // 是否展示标签
+        defaultCoverImg: "", // 默认封面图
+        defaultCoverBgColor: "", // 默认封面背景色，优先级低于 defaultCoverImg
+    },
+    articleAnalyze: {
+        showIcon: true, // 作者、日期、分类、标签、字数、阅读时长、浏览量等文章信息的图标是否显示
+        dateFormat: "yyyy-MM-dd hh:mm:ss", // 文章日期格式，首页和文章页解析日期时使用
+        dateUTC: true, // 是否使用 UTC 时间
+        showInfo: true, // 是否展示作者、日期、分类、标签、字数、阅读时长、浏览量等文章信息，分别作用于首页和文章页
+        showAuthor: true, // 是否展示作者
+        showCreateDate: true, // 是否展示创建日期
+        showUpdateDate: false, // 是否展示更新日期，仅在文章页显示
+        showCategory: false, // 是否展示分类
+        showTag: false, // 是否展示标签
+    },
+
+    breadcrumb: {
+        enabled: true, // 是否启用面包屑
+        showCurrentName: false, // 面包屑最后一列是否显示当前文章的文件名
+        separator: "/", // 面包屑分隔符
+        homeLabel: "首页", // 鼠标悬停首页图标的提示文案
+    },
+
+    pageStyle: "segment", //"default" | "card" | "segment" | "card-nav" | "segment-nav"
+
+    appreciation: {
+        position: "doc-after", // 赞赏位置
+        // 赞赏配置
+        options: {
+            icon: "weChatPay", // 赞赏图标，内置 weChatPay 和 alipay
+            expandTitle: "打赏支持", // 展开标题，支持 HTML
+            collapseTitle: "下次一定", // 折叠标题，支持 HTML
+            content: `<img src='/teek-logo-large.png'>`, // 赞赏内容，支持 HTML
+            expand: false, // 是否默认展开，默认 false
+        },
+    },
+
+    articleShare: {
+        enabled: true, // 是否开启文章链接分享功能
+        text: "分享此页面", // 分享按钮文本
+        copiedText: "链接已复制", // 复制成功文本
+        query: false, // 是否包含查询参数
+        hash: false, // 是否包含哈希值
+    },
+
+    articleTopTip: (frontmatter, localeIndex, page) => {
+        const tip: Record<string, string> = {
+            type: "warning",
+            text: "文章发布较早，内容可能过时，阅读注意甄别。",
+        };
+
+        // 大于半年，添加提示
+        const longTime = 6 * 30 * 24 * 60 * 60 * 1000;
+        if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
+    },
+
+    articleBottomTip: frontmatter => {
+        if (typeof window === "undefined") return;
+
+        const hash = false;
+        const query = false;
+        const { origin, pathname, search } = window.location;
+        const url = `${origin}${frontmatter.permalink ?? pathname}${query ? search : ""}${hash ? location.hash : ""}`;
+        const author = "Bertram";
+
+        return {
+            type: "tip",
+            // title: "声明", // 可选
+            text: `<p>作者：${author}</p>
+             <p style="margin-bottom: 0">链接：<a href="${decodeURIComponent(url)}" target="_blank">${decodeURIComponent(url)}</a></p>
+             <p>版权：此文章版权归 ${author} 所有，如有转载，请注明出处!</p>
+            `,
+        };
+    },
+
+    articleUpdate: {
+        enabled: true, // 是否启用文章最近更新栏
+        limit: 3, // 文章最近更新栏显示数量
+    },
 });
 
 // https://vitepress.dev/reference/site-config
