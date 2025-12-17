@@ -10,6 +10,11 @@ const teekConfig = defineTeekConfig({
       sortNumFromFileName: false, // 是否用文件名的前缀序号作为其侧边栏 Item 的排序序号。如果为 true，当文件名存在序号前缀，则使用序号前缀，否则使用 defaultSortNum
       // ... 更多配置
     },
+    autoFrontmatter: true, //Frontmatter自动生成
+    autoFrontmatterOption: {
+      permalinkPrefix: "pages", // 默认为 pages，可以修改为自定义值
+      permalink: true, // 关闭 permalink 自动生成
+    },
   },
 });
 
