@@ -21,4 +21,4 @@ EXPOSE 8848
 
 # 启动开发服务器（支持热更新和自动重建侧边栏）
 # --host 0.0.0.0 允许外部访问
-CMD ["npm", "run", "docs:dev", "--", "--host", "0.0.0.0", "--port", "8848"]
+CMD ["npm", "run", "docs:dev:docker"]

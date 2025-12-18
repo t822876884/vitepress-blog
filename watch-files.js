@@ -7,6 +7,7 @@
 
 const chokidar = require('chokidar');
 const path = require('path');
+const fs = require('fs');
 const { exec } = require('child_process');
 
 // 配置
@@ -48,13 +49,49 @@ function debounce(func, wait) {
     };
 }
 
-// 触发 VitePress 重新加载
-function triggerReload(filePath) {
-    const relativePath = path.relative(DOCS_DIR, filePath);
-    log(`检测到文件变化: ${relativePath}`, 'blue');
+// 清除 VitePress 缓存
+function clearCache() {
+    const cacheDir = path.join(DOCS_DIR, '.vitepress', 'cache');
 
-    // 这里可以添加额外的处理逻辑
-    // 例如：自动生成 frontmatter、更新索引等
+    try {
+        if (fs.existsSync(cacheDir)) {
+            log('正在清除缓存...', 'yellow');
+            fs.rmSync(cacheDir, { recursive: true, force: true });
+            log('缓存已清除', 'green');
+            return true;
+        }
+    } catch (error) {
+        log(`清除缓存失败: ${error.message}`, 'red');
+        return false;
+    }
+    return false;
+}
+
+// 触发 VitePress 重新加载
+function triggerReload(filePath, action = 'change') {
+    const relativePath = path.relative(DOCS_DIR, filePath);
+
+    if (action === 'add') {
+        log(`新增文件: ${relativePath}`, 'green');
+        clearCache();
+    } else if (action === 'unlink') {
+        log(`删除文件: ${relativePath}`, 'red');
+        clearCache();
+    } else {
+        log(`修改文件: ${relativePath}`, 'yellow');
+    }
+
+    // 触发一个虚拟的配置文件修改，让 VitePress 重新加载
+    const configFile = path.join(DOCS_DIR, '.vitepress', 'config.mts');
+    if (fs.existsSync(configFile) && (action === 'add' || action === 'unlink')) {
+        try {
+            const now = new Date();
+            fs.utimesSync(configFile, now, now);
+            log('已触发 VitePress 重新加载', 'blue');
+        } catch (error) {
+            log(`触发重新加载失败: ${error.message}`, 'red');
+        }
+    }
 }
 
 // 创建防抖的重载函数
@@ -78,20 +115,19 @@ function initWatcher() {
     // 监听文件添加
     watcher.on('add', (filePath) => {
         const fullPath = path.join(DOCS_DIR, filePath);
-        log(`新增文件: ${filePath}`, 'green');
-        debouncedReload(fullPath);
+        debouncedReload(fullPath, 'add');
     });
 
     // 监听文件修改
     watcher.on('change', (filePath) => {
         const fullPath = path.join(DOCS_DIR, filePath);
-        log(`修改文件: ${filePath}`, 'yellow');
-        debouncedReload(fullPath);
+        debouncedReload(fullPath, 'change');
     });
 
     // 监听文件删除
     watcher.on('unlink', (filePath) => {
-        log(`删除文件: ${filePath}`, 'red');
+        const fullPath = path.join(DOCS_DIR, filePath);
+        debouncedReload(fullPath, 'unlink');
     });
 
     // 错误处理

@@ -6,13 +6,17 @@
     "echarts": "^5.6.0",
     "sass": "^1.89.1",
     "vitepress": "^1.6.4",
-    "vitepress-theme-teek": "^1.5.4"
+    "vitepress-theme-teek": "^1.5.4",
+    "chokidar": "^3.6.0",
+    "concurrently": "^8.2.2"
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "concurrently \"node watch-files.js\" \"vitepress dev docs\"",
+    "docs:dev:docker": "concurrently \"node watch-files.js\" \"vitepress dev docs --host 0.0.0.0 --port 8848\"",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "docs:clean": "rm -rf docs/.vitepress/cache docs/.vitepress/dist",
+    "cache:clear": "./clear-cache.sh",
     "new": "./new-post.sh",
     "test:auto-index": "./test-auto-index.sh"
   },
