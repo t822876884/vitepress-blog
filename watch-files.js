@@ -106,8 +106,11 @@ function initWatcher() {
         cwd: DOCS_DIR,
         persistent: true,
         ignoreInitial: true,
+        usePolling: true,
+        interval: 1000,
+        binaryInterval: 3000,
         awaitWriteFinish: {
-            stabilityThreshold: 300,
+            stabilityThreshold: 500,
             pollInterval: 100,
         },
     });
