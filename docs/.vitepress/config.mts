@@ -9,6 +9,7 @@ const teekConfig = defineTeekConfig({
             sort: true, // 开启 frontmatter.sidebarSort 功能，默认已经开启，无需设置
             defaultSortNum: 9999, // 没有指定 frontmatter.sidebarSort 时的默认值，用于侧边栏排序
             sortNumFromFileName: false, // 是否用文件名的前缀序号作为其侧边栏 Item 的排序序号。如果为 true，当文件名存在序号前缀，则使用序号前缀，否则使用 defaultSortNum
+            ignoreList: ['@eaDir', '.DS_Store', 'Thumbs.db'], // 忽略 NAS 和系统生成的隐藏文件夹
             // ... 更多配置
         },
         autoFrontmatter: true, //Frontmatter自动生成

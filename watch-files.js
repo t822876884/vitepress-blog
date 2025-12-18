@@ -16,6 +16,9 @@ const WATCH_PATTERNS = [
     '!**/node_modules/**',
     '!**/.vitepress/cache/**',
     '!**/.vitepress/dist/**',
+    '!**/@eaDir/**',        // 忽略 Synology NAS 生成的缩略图文件夹
+    '!**/.DS_Store',        // 忽略 macOS 系统文件
+    '!**/Thumbs.db',        // 忽略 Windows 缩略图文件
 ];
 
 // 颜色输出

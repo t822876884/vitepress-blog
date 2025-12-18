@@ -3,3 +3,5 @@ docs/.vitepress/dist
 docs/.vitepress/cache
 .git
 .DS_Store
+@eaDir
+Thumbs.db

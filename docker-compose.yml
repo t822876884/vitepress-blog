@@ -5,12 +5,4 @@ services:
     container_name: vitepress_blog
     ports:
       - "8848:8848"
-    # volumes:
-    #   # Mount the specific content directories as requested
-    #   - /Users/bertram/Documents/tmp/vitepress-blog/docs/00.bigdata:/app/docs/00.bigdata
-    #   - /Users/bertram/Documents/tmp/vitepress-blog/docs/01.ai:/app/docs/01.ai
-    #   - /Users/bertram/Documents/tmp/vitepress-blog/docs/02.java:/app/docs/02.java
-    #   - /Users/bertram/Documents/tmp/vitepress-blog/docs/03.yunwei:/app/docs/03.yunwei
-    #   - /Users/bertram/Documents/tmp/vitepress-blog/docs/04.interview:/app/docs/04.interview
-    #   - /Users/bertram/Documents/tmp/vitepress-blog/docs/05.other:/app/docs/05.other
     restart: always
