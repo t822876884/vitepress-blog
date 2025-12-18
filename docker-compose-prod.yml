@@ -8,10 +8,12 @@ services:
       - "8848:8848"
     volumes:
       # Mount the specific content directories as requested
-      - /volume1/docker/doc_blog/00.bigdata:/app/docs/00.bigdata
-      - /volume1/docker/doc_blog/01.ai:/app/docs/01.ai
-      - /volume1/docker/doc_blog/02.java:/app/docs/02.java
-      - /volume1/docker/doc_blog/03.yunwei:/app/docs/03.yunwei
-      - /volume1/docker/doc_blog/04.interview:/app/docs/04.interview
-      - /volume1/docker/doc_blog/05.other:/app/docs/05.other
+      - /volume2/homes/bertram/docker/vitepress-blog/00.bigdata:/app/docs/00.bigdata
+      - /volume2/homes/bertram/docker/vitepress-blog/01.ai:/app/docs/01.ai
+      - /volume2/homes/bertram/docker/vitepress-blog/02.java:/app/docs/02.java
+      - /volume2/homes/bertram/docker/vitepress-blog/03.yunwei:/app/docs/03.yunwei
+      - /volume2/homes/bertram/docker/vitepress-blog/04.interview:/app/docs/04.interview
+      - /volume2/homes/bertram/docker/vitepress-blog/05.other:/app/docs/05.other
+      - /volume1/docker/doc-blog/cache:/app/docs/.vitepress/cache
+      - /volume1/docker/doc-blog/config.mts:/app/docs/.vitepress/config.mts
     restart: always
