@@ -1,5 +1,5 @@
-import {defineConfig} from 'vitepress'
-import {defineTeekConfig} from "vitepress-theme-teek/config";
+import { defineConfig } from 'vitepress'
+import { defineTeekConfig } from "vitepress-theme-teek/config";
 
 // Teek 主题配置
 const teekConfig = defineTeekConfig({
@@ -9,7 +9,7 @@ const teekConfig = defineTeekConfig({
             sort: true, // 开启 frontmatter.sidebarSort 功能，默认已经开启，无需设置
             defaultSortNum: 9999, // 没有指定 frontmatter.sidebarSort 时的默认值，用于侧边栏排序
             sortNumFromFileName: false, // 是否用文件名的前缀序号作为其侧边栏 Item 的排序序号。如果为 true，当文件名存在序号前缀，则使用序号前缀，否则使用 defaultSortNum
-            ignoreList: ['@eaDir', '.DS_Store', 'Thumbs.db'], // 忽略 NAS 和系统生成的隐藏文件夹
+            ignoreList: ['**/@eaDir', '**/@eaDir/**', '**/.DS_Store', '**/Thumbs.db'], // 忽略 NAS 和系统生成的隐藏文件夹
             // ... 更多配置
         },
         autoFrontmatter: true, //Frontmatter自动生成
@@ -109,13 +109,13 @@ const teekConfig = defineTeekConfig({
     homeCardSort: ["topArticle", "category", "tag", "friendLink", "docAnalysis"],
 
     tagColor: [
-        {border: "#bfdbfe", bg: "#eff6ff", text: "#2563eb"},
-        {border: "#e9d5ff", bg: "#faf5ff", text: "#9333ea"},
-        {border: "#fbcfe8", bg: "#fdf2f8", text: "#db2777"},
-        {border: "#a7f3d0", bg: "#ecfdf5", text: "#059669"},
-        {border: "#fde68a", bg: "#fffbeb", text: "#d97706"},
-        {border: "#a5f3fc", bg: "#ecfeff", text: "#0891b2"},
-        {border: "#c7d2fe", bg: "#eef2ff", text: "#4f46e5"},
+        { border: "#bfdbfe", bg: "#eff6ff", text: "#2563eb" },
+        { border: "#e9d5ff", bg: "#faf5ff", text: "#9333ea" },
+        { border: "#fbcfe8", bg: "#fdf2f8", text: "#db2777" },
+        { border: "#a7f3d0", bg: "#ecfdf5", text: "#059669" },
+        { border: "#fde68a", bg: "#fffbeb", text: "#d97706" },
+        { border: "#a5f3fc", bg: "#ecfeff", text: "#0891b2" },
+        { border: "#c7d2fe", bg: "#eef2ff", text: "#4f46e5" },
     ],
 
     // 博主信息，显示在首页左边第一个卡片。
@@ -304,7 +304,7 @@ const teekConfig = defineTeekConfig({
         };
 
         // 大于半年，添加提示
-        const longTime = 6 * 30 * 24 * 60 * 60 * 1000;
+        const longTime = 12 * 30 * 24 * 60 * 60 * 1000;
         if (frontmatter.date && Date.now() - new Date(frontmatter.date).getTime() > longTime) return tip;
     },
 
@@ -313,7 +313,7 @@ const teekConfig = defineTeekConfig({
 
         const hash = false;
         const query = false;
-        const {origin, pathname, search} = window.location;
+        const { origin, pathname, search } = window.location;
         const url = `${origin}${frontmatter.permalink ?? pathname}${query ? search : ""}${hash ? location.hash : ""}`;
         const author = "Bertram";
 
@@ -362,7 +362,7 @@ export default defineConfig({
                 // 监听所有文件变化，包括新增文件
                 usePolling: false,
                 // 忽略 node_modules 以提高性能
-                ignored: ['**/node_modules/**', '**/.git/**'],
+                ignored: ['**/node_modules/**', '**/.git/**', '**/@eaDir/**', '**/.DS_Store'],
             },
             // 启用文件系统严格模式
             fs: {
@@ -378,18 +378,18 @@ export default defineConfig({
     head: [
         [
             "link",
-            {rel: "icon", type: "image/svg+xml", href: "/teek-logo-mini.svg"},
+            { rel: "icon", type: "image/svg+xml", href: "/teek-logo-mini.svg" },
         ],
-        ["link", {rel: "icon", type: "image/png", href: "/teek-logo-mini.png"}],
-        ["meta", {property: "og:type", content: "website"}],
-        ["meta", {property: "og:locale", content: "zh-CN"}],
-        ["meta", {property: "og:title", content: "Teek | VitePress Theme"}],
-        ["meta", {property: "og:site_name", content: "Teek"}],
-        ["meta", {property: "og:image", content: ""}],
-        ["meta", {property: "og:url", content: ""}],
-        ["meta", {property: "og:description", description}],
-        ["meta", {name: "description", description}],
-        ["meta", {name: "author", content: "Teek"}],
+        ["link", { rel: "icon", type: "image/png", href: "/teek-logo-mini.png" }],
+        ["meta", { property: "og:type", content: "website" }],
+        ["meta", { property: "og:locale", content: "zh-CN" }],
+        ["meta", { property: "og:title", content: "Teek | VitePress Theme" }],
+        ["meta", { property: "og:site_name", content: "Teek" }],
+        ["meta", { property: "og:image", content: "" }],
+        ["meta", { property: "og:url", content: "" }],
+        ["meta", { property: "og:description", description }],
+        ["meta", { name: "description", description }],
+        ["meta", { name: "author", content: "Teek" }],
         // 禁止浏览器缩放
         // [
         //   "meta",
@@ -398,7 +398,7 @@ export default defineConfig({
         //     content: "width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no",
         //   },
         // ],
-        ["meta", {name: "keywords", description}],
+        ["meta", { name: "keywords", description }],
     ],
     markdown: {
         // 开启行号
@@ -426,7 +426,7 @@ export default defineConfig({
             items.forEach((item) => {
                 const permalink = permalinks?.map[item.url];
                 if (permalink)
-                    permalinkItemBak.push({url: permalink, lastmod: item.lastmod});
+                    permalinkItemBak.push({ url: permalink, lastmod: item.lastmod });
             });
             return [...items, ...permalinkItemBak];
         },
@@ -435,60 +435,60 @@ export default defineConfig({
         logo: "/teek-logo-mini.svg",
         // https://vitepress.dev/reference/default-theme-config
         nav: [
-            {text: 'Home', link: '/'},
+            { text: 'Home', link: '/' },
             {
                 text: "大数据", items: [
-                    {text: "Flink", link: "/bigdata/flink"},
-                    {text: "Spark", link: "/bigdata/spark"},
-                    {text: "HBase", link: "/bigdata/hbase"},
-                    {text: "ES", link: "/bigdata/es"},
-                    {text: "Doris", link: "/bigdata/doris"},
-                    {text: "Hive", link: "/bigdata/hive"},
+                    { text: "Flink", link: "/bigdata/flink" },
+                    { text: "Spark", link: "/bigdata/spark" },
+                    { text: "HBase", link: "/bigdata/hbase" },
+                    { text: "ES", link: "/bigdata/es" },
+                    { text: "Doris", link: "/bigdata/doris" },
+                    { text: "Hive", link: "/bigdata/hive" },
                 ],
             },
             {
                 text: "大模型", items: [
-                    {text: "提示词", link: "/ai/prompt"}
+                    { text: "提示词", link: "/ai/prompt" }
                 ],
             },
             {
                 text: "Java", items: [
-                    {text: "Spring", link: "/java/spring"},
-                    {text: "MySQL", link: "/java/mysql"},
+                    { text: "Spring", link: "/java/spring" },
+                    { text: "MySQL", link: "/java/mysql" },
                 ],
             },
             {
                 text: "运维", items: [
-                    {text: "Linux", link: "/yunwei/linux"},
-                    {text: "Docker", link: "/yunwei/docker"},
+                    { text: "Linux", link: "/yunwei/linux" },
+                    { text: "Docker", link: "/yunwei/docker" },
                 ],
             },
-            {text: "面试", link: "/interview"},
-            {text: "杂项", link: "/other"},
+            { text: "面试", link: "/interview" },
+            { text: "杂项", link: "/other" },
             {
                 text: '功能页',
                 items: [
-                    {text: "归档页", link: "/archives"},
-                    {text: "清单页", link: "/articleOverview"},
-                    {text: "分类页", link: "/categories"},
-                    {text: "标签页", link: "/tags"},
+                    { text: "归档页", link: "/archives" },
+                    { text: "清单页", link: "/articleOverview" },
+                    { text: "分类页", link: "/categories" },
+                    { text: "标签页", link: "/tags" },
                 ],
             },
-            {text: "✨ 赞赏", link: "/personal/"},
+            { text: "✨ 赞赏", link: "/personal/" },
         ],
 
         sidebar: [
             {
                 text: 'Examples',
                 items: [
-                    {text: 'Markdown Examples', link: '/markdown-examples'},
-                    {text: 'Runtime API Examples', link: '/api-examples'}
+                    { text: 'Markdown Examples', link: '/markdown-examples' },
+                    { text: 'Runtime API Examples', link: '/api-examples' }
                 ]
             }
         ],
 
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/vuejs/vitepress'}
+            { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
         ],
 
         // 本地全文搜索配置
