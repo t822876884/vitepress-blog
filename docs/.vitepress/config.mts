@@ -121,7 +121,7 @@ const teekConfig = defineTeekConfig({
     // 博主信息，显示在首页左边第一个卡片。
     blogger: {
         name: "Bertram", // 博主昵称
-        slogan: "朝圣的使徒，正在走向编程的至高殿堂！", // 博主签名
+        slogan: "与其在遗憾中徘徊，不如在希望中奔跑——毕竟，人生只有一次。", // 博主签名
         avatar: "https://testingcf.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar1.png", // 博主头像
         shape: "circle", // 头像风格：square 为方形头像，circle 为圆形头像，circle-rotate 可支持鼠标悬停旋转，circle-rotate-last 将会持续旋转 59s
         circleBgImg: "/blog/bg4.webp", // 背景图片
