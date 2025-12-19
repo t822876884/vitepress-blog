@@ -15,5 +15,5 @@ services:
       - /volume2/homes/bertram/docker/vitepress-blog/04.interview:/app/docs/04.interview
       - /volume2/homes/bertram/docker/vitepress-blog/05.other:/app/docs/05.other
       - /volume1/docker/doc-blog/cache:/app/docs/.vitepress/cache
-      - /volume1/docker/doc-blog/config.mts:/app/docs/.vitepress/config.mts
+      - /volume1/docker/doc-blog/config.ts:/app/docs/.vitepress/config.ts
     restart: always
