@@ -4,7 +4,7 @@ date: 2025-08-07 07:53:30
 sidebar: false
 article: false
 outline: false
-permalink: /pages/70d06c
+permalink: /pages/732f95
 categories:
   - 
 ---
@@ -16,12 +16,9 @@ categories:
 
 谢谢！❤️
 
-[//]: # ()
-[//]: # (|                                   微信赞赏                                   |                               微信                               |                            支付宝                            |)
-
-[//]: # (| :--------------------------------------------------------------------------: | :--------------------------------------------------------------: | :----------------------------------------------------------: |)
-
-[//]: # (| <img src="/qrcode/wechat-sponsor.jpg" alt="WeChat Sponsor QRcode" width=180> | <img src="/qrcode/wechat-pay.jpg" alt="WeChat QRcode" width=180> | <img src="/qrcode/alipay.jpg" alt="Alipay QRcode" width=180> |)
+|                                   微信赞赏                                   |                               微信                               |                            支付宝                            |
+| :--------------------------------------------------------------------------: | :--------------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src="/qrcode/wechat-sponsor.jpg" alt="WeChat Sponsor QRcode" width=180> | <img src="/qrcode/wechat-pay.jpg" alt="WeChat QRcode" width=180> | <img src="/qrcode/alipay.jpg" alt="Alipay QRcode" width=180> |
 
 您的赞助将帮助 Teek：
 
