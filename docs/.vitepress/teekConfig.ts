@@ -10,7 +10,7 @@ export const teekConfig = defineTeekConfig({
         link: "https://github.com/t822876884", // 点击作者名称后跳转的链接
     },
     banner: {
-        enabled: true, // 是否启用 Banner
+        enabled: false, // 是否启用 Banner
         // name: "Bertram", // Banner 标题，默认读取 vitepress 的 title 属性
         bgStyle: "fullImg", // Banner 背景风格：pure 为纯色背景，partImg 为局部图片背景，fullImg 为全屏图片背景
         pureBgColor: "#28282d", // Banner 背景色，bgStyle 为 pure 时生效
