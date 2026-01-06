@@ -3,7 +3,7 @@ services:
   vitepress:
     build: .
     platform: linux/amd64
-    container_name: vitepress_blog
+    container_name: vitepress-blog
     ports:
       - "8848:8848"
     volumes:

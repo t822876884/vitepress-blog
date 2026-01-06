@@ -2,7 +2,7 @@ version: '3'
 services:
   vitepress:
     build: .
-    container_name: vitepress_blog
+    container_name: vitepress-blog
     ports:
       - "8848:8848"
     restart: always

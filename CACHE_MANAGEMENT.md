@@ -103,7 +103,7 @@ services:
 
 ```bash
 # 进入容器
-docker exec -it vitepress_blog sh
+docker exec -it vitepress-blog sh
 
 # 清除缓存
 npm run cache:clear
@@ -139,7 +139,7 @@ npm run cache:clear
 **解决方案**：
 1. 检查文件挂载是否正确
 2. 确认文件权限设置
-3. 查看容器日志：`docker logs vitepress_blog`
+3. 查看容器日志：`docker logs vitepress-blog`
 
 ## 📝 相关文件
 
