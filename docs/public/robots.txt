@@ -1,0 +1,29 @@
+# robots.txt for Bertram's Blog
+# Allow all crawlers to access all content
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://vp.teek.top/sitemap.xml
+
+# Allow common AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Disallow access to specific directories if needed
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /private/
